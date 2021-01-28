@@ -9,19 +9,23 @@ import { TagForm } from "./tags/TagForm"
 import { TagProvider } from "./tags/TagProvider"
 import { TagList } from "./tags/TagList"
 
+import { PostForm } from "./posts/PostForm"
 
 export const ApplicationViews = (props) => {
     return (
     <>
         <PostProvider>
-            <TagProvider>
+            <CategoryProvider>
             <Route exact path = "/" render={
                 props => <PostList {...props} />
             } />
+            <Route exact path = "/createPost" render={
+                props => <PostForm {...props} />} />
+            
             <Route exact path = "/posts" render={
                 props => <PostList {...props} />
             } />
-            </TagProvider>
+            </CategoryProvider>
         </PostProvider>
         <CategoryProvider>
             <Route exact path="/categories">
