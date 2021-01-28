@@ -6,7 +6,7 @@ import { CategoryForm } from "./categories/CategoryForm"
 import { CategoryList } from "./categories/CategoryList"
 import { CategoryProvider } from "./categories/CategoryProvider"
 
-export const ApplicationViews = () => {
+export const ApplicationViews = (props) => {
     return (
     <>
         <PostProvider>
