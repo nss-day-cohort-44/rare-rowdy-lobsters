@@ -3,15 +3,13 @@ import {PostContext} from "./PostProvider"
 import {CategoryContext} from "../categories/CategoryProvider"
 
 export const PostForm=(props)=>{
-    const { categories, getCategories } = useContext(CategoryContext)
-    
-    const {addPosts}=useContext(PostContext)
+	const {categories, getCategories} = useContext(CategoryContext)
+    const {addPost}=useContext(PostContext)
 
     useEffect(() => {
 		getCategories()
 	}, [])
-
-    const [newPost, setNewPost]=useState()
+    // set the state for the items we need from the form
     const [title, setTitle]= useState()
     const [content, setContent]=useState()
     const [category, setCategory]=useState()
@@ -26,12 +24,18 @@ export const PostForm=(props)=>{
         setCategory(event.target.value)
     }
 
-
+    // making the new object on submit
     const constructNewPost=()=>{
-        console.log(newPost)
+        const user_id=parseInt(localStorage.getItem("rare_user_id"))
+        const newPost={
+            user_id:user_id,
+            category_id: category,
+            title: title,
+            publication_date:Date.now(),
+            content:content, 
+        }
+        addPost(newPost).then(props.history.push("/"))
     }
-
-    
 
     return(
         <>
