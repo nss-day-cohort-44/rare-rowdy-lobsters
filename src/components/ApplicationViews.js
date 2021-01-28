@@ -14,12 +14,17 @@ export const ApplicationViews = (props) => {
     return (
     <>
         <PostProvider>
+            <CategoryProvider>
             <Route exact path = "/" render={
                 props => <PostList {...props} />
             } />
+            <Route exact path = "/createPost" render={
+                props => <PostForm {...props} />} />
+            
             <Route exact path = "/posts" render={
                 props => <PostList {...props} />
             } />
+            </CategoryProvider>
         </PostProvider>
         <CategoryProvider>
             <Route exact path="/categories">
