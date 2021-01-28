@@ -11,7 +11,11 @@ export const PostList = (props) => {
 
     return (
         <>
+        <button onClick={() => props.history.push("/createPost")}>
+                Add Post
+            </button>
         {
+            
             posts.map(post => {
                 if (props.location.pathname === "/posts" ) {
                     return <Post post={post} />
