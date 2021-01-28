@@ -3,7 +3,7 @@ import { TagContext } from "./TagProvider"
 
 export const TagList = props => {
 
-	const {categories, getCategories, getTagById} = useContext(TagContext)
+	const {tags, getTags, getTagById} = useContext(TagContext)
 
 	useEffect(() => {
 		getTags();
