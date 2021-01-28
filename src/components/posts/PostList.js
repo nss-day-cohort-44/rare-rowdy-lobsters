@@ -11,11 +11,15 @@ export const PostList = (props) => {
 
     return (
         <>
+        <button onClick={() => props.history.push("/createPost")}>
+                Add Post
+            </button>
         {
+            
             posts.map(post => {
                 
                 if (parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))) {
-                    console.table(posts)
+                    // console.table(posts)
                     return <Post post={post} />
                 }
                 // else
