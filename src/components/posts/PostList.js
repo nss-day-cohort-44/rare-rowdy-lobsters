@@ -13,9 +13,11 @@ export const PostList = (props) => {
         <>
         {
             posts.map(post => {
+                if (props.location.pathname === "/posts" ) {
+                    return <Post post={post} />
+                }
                 
-                if (parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))) {
-                    console.table(posts)
+                else if (parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))) {
                     return <Post post={post} />
                 }
                 // else

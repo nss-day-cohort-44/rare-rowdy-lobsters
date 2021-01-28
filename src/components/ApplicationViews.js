@@ -13,6 +13,9 @@ export const ApplicationViews = (props) => {
             <Route exact path = "/" render={
                 props => <PostList {...props} />
             } />
+            <Route exact path = "/posts" render={
+                props => <PostList {...props} />
+            } />
         </PostProvider>
         <CategoryProvider>
             <Route exact path="/categories">
