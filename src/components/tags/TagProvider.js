@@ -13,7 +13,7 @@ export const TagProvider = props => {
 
   const getTagById = id => tags.find(t=> t.id === parseInt(id))
 
-  const addTag = category => {
+  const addTag = tag => {
     return fetch("http://localhost:8088/tags", {
       method: "POST",
       headers: {
