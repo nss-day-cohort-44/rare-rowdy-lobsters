@@ -5,6 +5,10 @@ import { PostProvider } from "./posts/PostProvider"
 import { CategoryForm } from "./categories/CategoryForm"
 import { CategoryList } from "./categories/CategoryList"
 import { CategoryProvider } from "./categories/CategoryProvider"
+import { TagForm } from "./tags/TagForm"
+import { TagProvider } from "./tags/TagProvider"
+import { TagList } from "./tags/TagList"
+
 
 export const ApplicationViews = (props) => {
     return (
@@ -23,6 +27,17 @@ export const ApplicationViews = (props) => {
                 <CategoryForm />
             </Route>
         </CategoryProvider>
+<<<<<<< HEAD
  </>
     )
+=======
+
+        <TagProvider>
+            <Route exact path="/tags">
+                <TagList {...props} />
+                <TagForm />
+            </Route>
+        </TagProvider>
+    </>
+>>>>>>> origin/jk-client-view
 }
