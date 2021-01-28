@@ -1,12 +1,13 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { PostList } from "./posts/PostList"
 import { PostProvider } from "./posts/PostProvider"
 
 export const ApplicationViews = () => {
     return (
     <>
         <PostProvider>
-            <Route exact path = "/posts/:myPosts(\d+)" render={
+            <Route exact path = "/" render={
                 props => <PostList {...props} />
             } />
         </PostProvider>
