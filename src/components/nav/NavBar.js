@@ -12,7 +12,10 @@ export const NavBar = () => {
                 <img className="navbar__logo" src={Logo} />
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/">Posts</Link>
+                <Link className="navbar__link" to="/">My Posts</Link>
+            </li>
+            <li className="navbar__item">
+                <Link className="navbar__link" to={{pathname: "/posts"}}>All Posts</Link>
             </li>
             <li className="navbar__item">
                 <Link className="navbar__link" to="/tags">Tags</Link>
