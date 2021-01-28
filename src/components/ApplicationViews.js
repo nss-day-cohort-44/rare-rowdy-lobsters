@@ -5,10 +5,10 @@ import { PostProvider } from "./posts/PostProvider"
 import { CategoryForm } from "./categories/CategoryForm"
 import { CategoryList } from "./categories/CategoryList"
 import { CategoryProvider } from "./categories/CategoryProvider"
+import { PostForm } from "./posts/PostForm"
 import { TagForm } from "./tags/TagForm"
-import { TagProvider } from "./tags/TagProvider"
 import { TagList } from "./tags/TagList"
-
+import { TagProvider } from "./tags/TagProvider"
 
 export const ApplicationViews = (props) => {
     return (
@@ -39,6 +39,6 @@ export const ApplicationViews = (props) => {
                 <TagForm />
             </Route>
         </TagProvider>
-    </>
+ </>
     )
 }
