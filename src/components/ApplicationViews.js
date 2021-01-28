@@ -14,12 +14,14 @@ export const ApplicationViews = (props) => {
     return (
     <>
         <PostProvider>
+            <TagProvider>
             <Route exact path = "/" render={
                 props => <PostList {...props} />
             } />
             <Route exact path = "/posts" render={
                 props => <PostList {...props} />
             } />
+            </TagProvider>
         </PostProvider>
         <CategoryProvider>
             <Route exact path="/categories">
@@ -27,10 +29,6 @@ export const ApplicationViews = (props) => {
                 <CategoryForm />
             </Route>
         </CategoryProvider>
-<<<<<<< HEAD
- </>
-    )
-=======
 
         <TagProvider>
             <Route exact path="/tags">
@@ -39,5 +37,5 @@ export const ApplicationViews = (props) => {
             </Route>
         </TagProvider>
     </>
->>>>>>> origin/jk-client-view
+    )
 }

@@ -24,6 +24,20 @@ export const TagProvider = props => {
     .then(getTags)
   }
 
+  const addPostTag = (tagId, postId) => {
+    const tagObj = {
+      tag_id: tagId,
+      post_id: postId
+    }
+    return fetch("http://localhost:8088/postTags"), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(tagObj)
+    }
+  }
+
   return <TagContext.Provider value = {{
 		tags, getTags, getTagById, addTag
 	}}>
