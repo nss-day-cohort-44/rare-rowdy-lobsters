@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
+import { PostProvider } from "../posts/PostProvider";
 
 export const TagContext = React.createContext();
 

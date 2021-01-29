@@ -6,7 +6,7 @@ import { faTrashAlt, faCog, faTags, faTag } from '@fortawesome/free-solid-svg-ic
 import { TagPost } from "../tags/TagPost"
 
 export const PostDetail = props => {
-    const { getPostById, deletePost } = useContext(PostContext)
+    const { posts, getPostById, deletePost } = useContext(PostContext)
 
     const [post, setPost] = useState({})
     const [date, setDate] = useState({})
@@ -17,7 +17,10 @@ export const PostDetail = props => {
             .then(post => setPost(post))
     }, [])
 
-
+    useEffect(() => {
+        getPostById(props.match.params.postId)
+            .then(post => setPost(post))
+    }, [posts])
 
     return (
         <>
@@ -35,6 +38,11 @@ export const PostDetail = props => {
                 {post.user
                 ? <div className="post__author">Author: {post.user.first_name} {post.user.last_name}</div>
                 : ""}
+                {post.tags && post.tags.length > 0
+                ? <div className="post__tags">Tags:
+                {post.tags.map(t => {
+                    return <span className="post__tags__tag">{t.label}</span>
+                })} </div>: ""}
                 {/* reaction count */}
                 <FontAwesomeIcon icon={faCog} />
                 <FontAwesomeIcon icon={faTrashAlt} />
@@ -42,6 +50,7 @@ export const PostDetail = props => {
                     tagPost ? setTagPost(false) : setTagPost(post.id)
                 }}/>
                 {tagPost && <TagPost post={post}/>
+
         }
             </section>
         </>
