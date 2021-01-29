@@ -4,12 +4,15 @@ import { HumanDate } from "../utils/HumanDate"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faCog, faComment } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
+import { faTrashAlt, faCog, faTags, faTag } from '@fortawesome/free-solid-svg-icons'
+import { TagPost } from "../tags/TagPost"
 
 export const PostDetail = props => {
     const { getPostById, deletePost } = useContext(PostContext)
 
     const [post, setPost] = useState({})
     const [date, setDate] = useState({})
+    const [tagPost, setTagPost] = useState()
 
     useEffect(() => {
         getPostById(props.match.params.postId)
@@ -41,6 +44,11 @@ export const PostDetail = props => {
                 <FontAwesomeIcon icon={faComment} />
                 </Link>
                 
+                <FontAwesomeIcon icon={faTags} onClick={() => {
+                    tagPost ? setTagPost(false) : setTagPost(post.id)
+                }}/>
+                {tagPost && <TagPost post={post}/>
+        }
             </section>
         </>
     )
