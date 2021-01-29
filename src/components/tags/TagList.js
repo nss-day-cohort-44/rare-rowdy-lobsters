@@ -13,6 +13,10 @@ export const TagList = props => {
 		<>
 			<div>
 				{tags.map(t => <p>{t.label}</p>)}
+				<button type="submit" onClick={evt => {
+					evt.preventDefault()
+					addNewTag()
+				}}>Add</button>
 			</div>
 		</>
 	)
