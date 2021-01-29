@@ -2,9 +2,9 @@ import React, {useContext, useEffect, useState} from "react"
 import { PostContext } from "./PostProvider"
 import { HumanDate } from "../utils/HumanDate"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faCog, faComment } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faCog, faComment, faTags, } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
-import { faTrashAlt, faCog, faTags, faTag } from '@fortawesome/free-solid-svg-icons'
+// import { faTrashAlt, faCog, faTags, faTag } from '@fortawesome/free-solid-svg-icons'
 import { TagPost } from "../tags/TagPost"
 
 export const PostDetail = props => {
