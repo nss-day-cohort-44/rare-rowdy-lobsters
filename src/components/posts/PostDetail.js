@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from "react"
 import { PostContext } from "./PostProvider"
+import { HumanDate } from "../utils/HumanDate"
 
 export const PostDetail = props => {
     const { getPostById, deletePost } = useContext(PostContext)
@@ -7,16 +8,25 @@ export const PostDetail = props => {
     const [post, setPost] = useState({})
 
     useEffect(() => {
-        console.log(post);
         getPostById(props.match.params.postId)
             .then(post => setPost(post))
+
     }, [])
+
+    useEffect(() => {
+        
+    }, [post])
+    debugger
+    const post_date = new Date(post.publication_date)
+    console.log(post_date);
 
     return (
         <>
             <section className="post">
                 <h3 className="post__title">{post.title}</h3>
-                <div className="post__date">{post.publication_date}</div>
+                {/* {post.user
+                ? <div className="post__date">{post_date}</div>
+                : ""} */}
                 <div className="post__image">
                 {post.image_url 
                 ? <img src={`${post.image_url}`}/>  
