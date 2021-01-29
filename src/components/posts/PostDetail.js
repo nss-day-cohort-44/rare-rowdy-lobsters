@@ -56,6 +56,9 @@ export const PostDetail = props => {
                     Yes</Button>
             </Modal.Footer>
             </Modal>
+            <Link to={{pathname: "/post/comments", state:{chosenPost: post} }}>
+                <button>View Comments</button>
+            </Link>
         </>
         );
     }

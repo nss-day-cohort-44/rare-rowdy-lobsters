@@ -12,6 +12,7 @@ import { PostDetail } from "./posts/PostDetail"
 import { TagForm } from "./tags/TagForm"
 import { TagList } from "./tags/TagList"
 import { TagProvider } from "./tags/TagProvider"
+import { CommentList } from "./comments/CommentList"
 
 export const ApplicationViews = (props) => {
     return (
@@ -44,6 +45,9 @@ export const ApplicationViews = (props) => {
             <CommentProvider>
                 <Route path="/addComment" render={
                     props => <CommentForm {...props} />
+                } />
+                <Route exact path="/post/comments" render={
+                    props => <CommentList {...props} />
                 } />
             </CommentProvider>
             <TagProvider>
