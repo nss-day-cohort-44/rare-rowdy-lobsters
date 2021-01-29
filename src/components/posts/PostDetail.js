@@ -7,7 +7,7 @@ import { TagPost } from "../tags/TagPost"
 import {Button, Modal} from 'react-bootstrap'
 
 export const PostDetail = props => {
-    const { getPostById, deletePost } = useContext(PostContext)
+    const { posts, getPostById, deletePost } = useContext(PostContext)
 
     const [post, setPost] = useState({})
     const [tagPost, setTagPost] = useState()
@@ -16,6 +16,11 @@ export const PostDetail = props => {
         getPostById(props.match.params.postId)
             .then(post => setPost(post))
     }, [])
+
+    useEffect(() => {
+        getPostById(props.match.params.postId)
+            .then(post => setPost(post))
+    }, [posts])
 
     // modal
     function DeleteConfModal() {
@@ -54,7 +59,6 @@ export const PostDetail = props => {
         );
     }
 
-
     return (
         <>
             <section className="post">
@@ -71,6 +75,11 @@ export const PostDetail = props => {
                 {post.user
                 ? <div className="post__author">Author: {post.user.first_name} {post.user.last_name}</div>
                 : ""}
+                {post.tags && post.tags.length > 0
+                ? <div className="post__tags">Tags:
+                {post.tags.map(t => {
+                    return <span className="post__tags__tag">{t.label}</span>
+                })} </div>: ""}
                 {/* reaction count */}
                 <FontAwesomeIcon icon={faCog} />
                 
@@ -81,6 +90,7 @@ export const PostDetail = props => {
                     tagPost ? setTagPost(false) : setTagPost(post.id)
                 }}/>
                 {tagPost && <TagPost post={post}/>
+
         }
             </section>
         </>
