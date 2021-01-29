@@ -35,6 +35,9 @@ export const PostDetail = props => {
             {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))
                     ?<FontAwesomeIcon icon={faTrashAlt} onClick={handleShow} /> 
                     : ""}
+             {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))
+                    ?<FontAwesomeIcon icon={faCog} onClick={handleShow} onClick={() => props.history.push(`/createPost/${post.id}`)} /> 
+                    : ""}
 
             <Modal
                 show={show}
@@ -81,7 +84,7 @@ export const PostDetail = props => {
                     return <span className="post__tags__tag">{t.label}</span>
                 })} </div>: ""}
                 {/* reaction count */}
-                <FontAwesomeIcon onClick={() => props.history.push(`/createPost/${post.id}`)} icon={faCog} />
+                {/* <FontAwesomeIcon onClick={() => props.history.push(`/createPost/${post.id}`)} icon={faCog} /> */}
                 
                 <DeleteConfModal />
 
