@@ -6,6 +6,7 @@ import { CategoryForm } from "./categories/CategoryForm"
 import { CategoryList } from "./categories/CategoryList"
 import { CategoryProvider } from "./categories/CategoryProvider"
 import { PostForm } from "./posts/PostForm"
+import { PostDetail } from "./posts/PostDetail"
 import { TagForm } from "./tags/TagForm"
 import { TagList } from "./tags/TagList"
 import { TagProvider } from "./tags/TagProvider"
@@ -34,18 +35,23 @@ export const ApplicationViews = (props) => {
                     <CategoryForm />
                 </Route>
             </CategoryProvider>
-            <CategoryProvider>
-                <Route exact path="/categories">
-                    <CategoryList {...props} />
-                    <CategoryForm />
-                </Route>
-            </CategoryProvider>
-            <TagProvider>
-                <Route exact path="/tags">
-                    <TagList {...props} />
-                    <TagForm />
-                </Route>
-            </TagProvider>
-        </>
+        <CategoryProvider>
+            <Route exact path="/categories">
+                <CategoryList {...props} />
+                <CategoryForm />
+            </Route>
+        </CategoryProvider>
+        <PostProvider>
+            <Route path="/posts/:postId(\d+)" render={
+                props => <PostDetail {...props} />
+            } />
+        </PostProvider>
+        <TagProvider>
+            <Route exact path="/tags">
+                <TagList {...props} />
+                <TagForm />
+            </Route>
+        </TagProvider>
+ </>
     )
 }
