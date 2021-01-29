@@ -3,7 +3,7 @@ import { CategoryContext } from "./CategoryProvider"
 
 export const CategoryList = props => {
 
-	const {categories, getCategories, getCategoryById} = useContext(CategoryContext)
+	const {categories, getCategories, deleteCategory} = useContext(CategoryContext)
 
 	useEffect(() => {
 		getCategories();
@@ -12,7 +12,9 @@ export const CategoryList = props => {
 	return (
 		<>
 			<div>
-				{categories.map(c => <p>{c.label}</p>)}
+				{categories.map(c => <p>{c.label}<button onClick={() => {
+					deleteCategory(c.id)
+				}}>Delete Category</button></p>)}
 			</div>
 		</>
 	)
