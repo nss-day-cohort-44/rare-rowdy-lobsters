@@ -7,6 +7,7 @@ export const PostDetail = props => {
     const [post, setPost] = useState({})
 
     useEffect(() => {
+        console.log(post);
         getPostById(props.match.params.postId)
             .then(post => setPost(post))
     }, [])
@@ -15,10 +16,18 @@ export const PostDetail = props => {
         <>
             <section className="post">
                 <h3 className="post__title">{post.title}</h3>
-                <div className="post_date">{post.publication_date}</div>
+                <div className="post__date">{post.publication_date}</div>
+                <div className="post__image">
                 {post.image_url 
-                    ? <img src={`${post.image_url}`}/>  
-                    :""}
+                ? <img src={`${post.image_url}`}/>  
+                :""}
+                </div>
+                <div className="post__content">{post.content}</div>
+                {post.user
+                ? <div className="post__author">Author: {post.user.first_name} {post.user.last_name}</div>
+                : console.log('no')}
+                {/* reaction count */}
+                
             </section>
         </>
     )
