@@ -22,6 +22,7 @@ export const PostProvider = (props) => {
             method: "DELETE"
         })
         .then(getPosts)
+        .then(props.history.push("/"))
     }
 
     const addPost = newPost => {

@@ -46,7 +46,7 @@ export const PostDetail = props => {
                 Close
                 </Button>
                 <Button variant="primary" 
-                    onClick={()=>deletePost(post.id).then(props.history.push("/"))}>
+                    onClick={()=>deletePost(post.id)}>
                     Yes</Button>
             </Modal.Footer>
             </Modal>
