@@ -3,7 +3,7 @@ import { TagContext } from "./TagProvider"
 
 export const TagPost = ({post}) => {
 
-	const {tags, getTags, getTagById} = useContext(TagContext)
+	const {tags, getTags, addPostTag} = useContext(TagContext)
 
 	useEffect(() => {
 		getTags();
@@ -14,7 +14,7 @@ export const TagPost = ({post}) => {
 			<div>
 				{tags.map(t => {
 					return <p><span onClick={() => {
-						console.log(t.label, post.id)
+						addPostTag(t.id, post.id)
 					}}>{t.label}</span></p>
 				})}
 			</div>
