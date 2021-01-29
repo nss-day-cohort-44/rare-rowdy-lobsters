@@ -4,7 +4,8 @@ import {CategoryContext} from "../categories/CategoryProvider"
 
 export const PostForm=(props)=>{
 	const {categories, getCategories} = useContext(CategoryContext)
-    const {addPost}=useContext(PostContext)
+    const {addPost, editPost}=useContext(PostContext)
+    const {post, setPost}=useState({})
 
     useEffect(() => {
 		getCategories()
@@ -14,6 +15,9 @@ export const PostForm=(props)=>{
     const [content, setContent]=useState()
     const [category, setCategory]=useState()
 
+    const editMode = props.match.params.hasOwnProperty("id")  // true or false
+    console.log(editMode)
+
     const TitleStateChange=(event)=>{
         setTitle(event.target.value)
     }
@@ -22,6 +26,14 @@ export const PostForm=(props)=>{
     }
     const CategoryStateChange=(event)=>{
         setCategory(event.target.value)
+    }
+
+    const getPostInEditMode=()=>{
+        if(editMode){
+            const postId=parseInt(props.match.params.postId)
+            const selectedPost=post.find(p=>p.id===postId)
+            setPost(selectedPost)
+        }
     }
 
     // making the new object on submit
@@ -44,7 +56,7 @@ export const PostForm=(props)=>{
 
                 <fieldset>
                     <label> Title</label>
-                    <input type="text" name="title" onChange={TitleStateChange}></input>
+                    <input type="text" name="title"  onChange={TitleStateChange}></input>
                 </fieldset>
 
                 <fieldset>

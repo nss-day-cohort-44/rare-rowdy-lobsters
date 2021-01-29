@@ -34,11 +34,13 @@ export const PostDetail = props => {
                 ? <div className="post__author">Author: {post.user.first_name} {post.user.last_name}</div>
                 : ""}
                 {/* reaction count */}
-                <FontAwesomeIcon icon={faCog} />
+                <FontAwesomeIcon onClick={() => props.history.push("/createPost/")} icon={faCog} />
                 <FontAwesomeIcon icon={faTrashAlt} />
             </section>
         </>
     )
 }
+
+
 
 

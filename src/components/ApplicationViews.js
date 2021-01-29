@@ -25,6 +25,8 @@ export const ApplicationViews = (props) => {
             <Route exact path = "/posts" render={
                 props => <PostList {...props} />
             } />
+            <Route path="posts/edit/:postId(\d+)" render={props => <PostForm{...props}/>
+            } />
             </CategoryProvider>
         </PostProvider>
         <CategoryProvider>
