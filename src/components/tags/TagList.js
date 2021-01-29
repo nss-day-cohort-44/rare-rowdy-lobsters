@@ -1,79 +1,60 @@
 import React, { useContext, useEffect } from "react"
 import { TagContext } from "./TagProvider"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
-import { Form, Button, Modal } from 'react-bootstrap'
+import {Button, Modal} from 'react-bootstrap'
 
 export const TagList = props => {
-	
-	const {tags, getTags, getTagById, deleteTag} = useContext(TagContext)
+
+	const {tags, getTags, getTagById} = useContext(TagContext)
 
 	useEffect(() => {
 		getTags();
 	}, [])
 
-	//modal
-	function Example() {
+	// modal
+	function DeleteTagModal() {
 		const [show, setShow] = useState(false);
-	
+
 		const handleClose = () => setShow(false);
 		const handleShow = () => setShow(true);
-	
+
 		return (
 			<>
-				<Button variant="primary" onClick={handleShow}>
-					Launch static backdrop modal
-				</Button>
-	
-				<Modal
-					show={show}
-					onHide={handleClose}
-					backdrop="static"
-					keyboard={false}
-				>
+
+					{parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))
+									?<FontAwesomeIcon icon={faTrashAlt} onClick={handleShow} /> 
+									: ""}
+
+					<Modal
+							show={show}
+							onHide={handleClose}
+					>
 					<Modal.Header closeButton>
-						<Modal.Title>Modal title</Modal.Title>
+							<Modal.Title>Delete</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						I will not close if you click outside me. Don't even try to press
-						escape key.
+							Are you sure?
 					</Modal.Body>
 					<Modal.Footer>
-						<Button variant="secondary" onClick={handleClose}>
+							<Button variant="secondary" onClick={handleClose}>
 							Close
-						</Button>
-						<Button variant="primary">Understood</Button>
+							</Button>
+							<Button variant="primary" 
+									onClick={()=>deleteTag(post.id).then(props.history.push("/"))}>
+									Yes</Button>
 					</Modal.Footer>
-				</Modal>
+					</Modal>
 			</>
-		);
+			);
 	}
+
+
+
 
 	return (
 		<>
 			<div>
-				{tags.map(t => <p>{t.label}
-					<button onClick={() => {
-					deleteTag(t.id)
-					}}><FontAwesomeIcon icon={faTrashAlt} />
-					</button>
-				</p>)}
+				{tags.map(t => <p>{t.label}</p>)}
 			</div>
 		</>
 	)
 }
-
-
-//this works to delete
-// return (
-// 	<>
-// 		<div>
-// 			{tags.map(t => <p>{t.label}
-// 				<button onClick={() => {
-// 				deleteTag(t.id)
-// 				}}><FontAwesomeIcon icon={faTrashAlt} />
-// 				</button>
-// 			</p>)}
-// 		</div>
-// 	</>
-// )
