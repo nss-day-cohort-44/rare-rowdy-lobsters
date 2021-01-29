@@ -5,9 +5,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faCog, faTags, faTag } from '@fortawesome/free-solid-svg-icons'
 import { TagPost } from "../tags/TagPost"
 import {Button, Modal} from 'react-bootstrap'
+import { TagContext } from "../tags/TagProvider"
 
 export const PostDetail = props => {
-    const { posts, getPostById, deletePost } = useContext(PostContext)
+    const { posts, getPosts, getPostById, deletePost } = useContext(PostContext)
+    const { deletePostTag } = useContext(TagContext)
 
     const [post, setPost] = useState({})
     const [tagPost, setTagPost] = useState()
@@ -78,17 +80,22 @@ export const PostDetail = props => {
                 {post.tags && post.tags.length > 0
                 ? <div className="post__tags">Tags:
                 {post.tags.map(t => {
-                    return <span className="post__tags__tag">{t.label}</span>
+                    return <span className="post__tags__tag">{t.label}
+                    		    <FontAwesomeIcon icon={faTrashAlt} onClick={() => {
+                                deletePostTag(t.post_tag_id)
+                                .then(getPosts)
+						}} />
+                    </span>
                 })} </div>: ""}
                 {/* reaction count */}
                 <FontAwesomeIcon icon={faCog} />
                 
                 <DeleteConfModal />
+                {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id")) ?
 
-                <FontAwesomeIcon icon={faTrashAlt} />
                 <FontAwesomeIcon icon={faTags} onClick={() => {
                     tagPost ? setTagPost(false) : setTagPost(post.id)
-                }}/>
+                }}/> : ""}
                 {tagPost && <TagPost post={post}/>
 
         }
