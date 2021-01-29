@@ -8,7 +8,6 @@ import { CategoryProvider } from "./categories/CategoryProvider"
 import { PostForm } from "./posts/PostForm"
 import { TagForm } from "./tags/TagForm"
 import { TagList } from "./tags/TagList"
-import { PostForm } from "./posts/PostForm"
 import { TagProvider } from "./tags/TagProvider"
 
 export const ApplicationViews = (props) => {
