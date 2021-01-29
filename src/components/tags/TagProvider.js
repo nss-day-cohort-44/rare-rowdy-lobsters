@@ -26,7 +26,6 @@ export const TagProvider = props => {
   }
 
   const addPostTag = (tagId, postId) => {
-    console.log("add tag?")
     const tagObj = {
       tag_id: tagId,
       post_id: postId
