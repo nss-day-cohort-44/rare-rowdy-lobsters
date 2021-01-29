@@ -12,7 +12,6 @@ export const PostProvider = (props) => {
         .then(setPosts)
     }
 
-<<<<<<< HEAD
     const getPostById = id => {
         return fetch(`http://localhost:8088/posts/${id}`)
             .then(res => res.json())
@@ -25,13 +24,6 @@ export const PostProvider = (props) => {
         .then(getPosts)
     }
 
-    return (
-        <PostContext.Provider value={
-            {
-                posts, setPosts, getPosts, getPostById
-            }
-        }>
-=======
     const addPost = newPost => {
         return fetch("http://localhost:8088/posts", {
             method: "POST",
@@ -44,8 +36,7 @@ export const PostProvider = (props) => {
     }
 
     return (
-        <PostContext.Provider value={{posts, setPosts, getPosts, addPost}}>
->>>>>>> main
+        <PostContext.Provider value={{posts, setPosts, getPosts, addPost, deletePost, getPostById}}>
             {props.children}
         </PostContext.Provider>
     )

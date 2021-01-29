@@ -15,6 +15,10 @@ export const PostDetail = props => {
         <>
             <section className="post">
                 <h3 className="post__title">{post.title}</h3>
+                <div className="post_date">{post.publication_date}</div>
+                {post.image_url 
+                    ? <img src={`${post.image_url}`}/>  
+                    :""}
             </section>
         </>
     )
@@ -31,3 +35,11 @@ export const PostDetail = props => {
 // 			p.approved,
 // 			u.first_name,
 // 			u.last_name
+
+// Post Details include:
+
+// Title
+// Header image (if exists)
+// Content
+// Publication date (MM/DD/YYYY)
+// Author's Display Name
