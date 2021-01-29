@@ -8,6 +8,9 @@ import { CategoryProvider } from "./categories/CategoryProvider"
 import { CommentProvider } from "./comments/CommentProvider"
 import { CommentForm } from "./comments/CommentForm"
 import { PostForm } from "./posts/PostForm"
+import { TagForm } from "./tags/TagForm"
+import { TagList } from "./tags/TagList"
+import { TagProvider } from "./tags/TagProvider"
 
 export const ApplicationViews = (props) => {
     return (
@@ -35,6 +38,15 @@ export const ApplicationViews = (props) => {
                     <CommentForm {...props} />
                 </Route>
             </CommentProvider>
+            <TagProvider>
+                <Route exact path="/tags">
+                    <TagList {...props} />
+                    <TagForm />
+                </Route>
+            </TagProvider>
         </>
-        )
-    }
+    )
+}
+
+
+
