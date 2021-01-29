@@ -2,7 +2,8 @@ import React, {useContext, useEffect, useState} from "react"
 import { PostContext } from "./PostProvider"
 import { HumanDate } from "../utils/HumanDate"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faCog } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faCog, faComment } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom"
 
 export const PostDetail = props => {
     const { getPostById, deletePost } = useContext(PostContext)
@@ -36,6 +37,10 @@ export const PostDetail = props => {
                 {/* reaction count */}
                 <FontAwesomeIcon icon={faCog} />
                 <FontAwesomeIcon icon={faTrashAlt} />
+                <Link to={{pathname: "/addComment", state: {chosenPost: props.location.state.chosenPost} }}>
+                <FontAwesomeIcon icon={faComment} />
+                </Link>
+                
             </section>
         </>
     )

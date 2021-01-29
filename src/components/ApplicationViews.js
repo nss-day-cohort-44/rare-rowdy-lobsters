@@ -27,20 +27,22 @@ export const ApplicationViews = (props) => {
                         props => <PostList {...props} />
                     } />
                     <Route path="/posts/:postId(\d+)" render={
-                props => <PostDetail {...props} />
-            } />
+                        props => <PostDetail {...props} />
+                    } />
                 </PostProvider>
             </CommentProvider>
             <CategoryProvider>
                 <Route exact path="/categories">
                     <CategoryList {...props} />
-                    <CategoryForm />
+                    <CategoryForm {...props} />
                 </Route>
             </CategoryProvider>
             <CommentProvider>
-                <Route path="/addComment">
-                    <CommentForm {...props} />
-                </Route>
+                <Route path="/addComment" render={
+                    props => <CommentForm {...props} />
+                } />
+
+
             </CommentProvider>
             <TagProvider>
                 <Route exact path="/tags">
