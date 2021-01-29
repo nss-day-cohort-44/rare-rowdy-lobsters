@@ -10,9 +10,9 @@ export const CommentForm = props => {
 
     const CreateComment = () => {
         addComment({
-            post_id: parseInt(props.location.state.chosenPost),
+            post_id: parseInt(props.location.state.chosenPost.id),
             author_id: parseInt(localStorage.getItem("rare_user_id")),
-            comment,
+            content: comment.current.value,
             created_on: Date.now()
         })
     }

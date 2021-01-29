@@ -2,6 +2,8 @@ import React, {useContext, useEffect, useState} from "react"
 import { PostContext } from "./PostProvider"
 import { HumanDate } from "../utils/HumanDate"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faCog, faComment } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom"
 import { faTrashAlt, faCog, faTags, faTag } from '@fortawesome/free-solid-svg-icons'
 import { TagPost } from "../tags/TagPost"
 import {Button, Modal} from 'react-bootstrap'
@@ -86,6 +88,10 @@ export const PostDetail = props => {
                 <DeleteConfModal />
 
                 <FontAwesomeIcon icon={faTrashAlt} />
+                <Link to={{pathname: "/addComment", state: {chosenPost: props.location.state.chosenPost} }}>
+                <FontAwesomeIcon icon={faComment} />
+                </Link>
+                
                 <FontAwesomeIcon icon={faTags} onClick={() => {
                     tagPost ? setTagPost(false) : setTagPost(post.id)
                 }}/>

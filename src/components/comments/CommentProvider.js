@@ -14,7 +14,7 @@ export const CommentProvider = (props) => {
 
     const addComment = comment => {
         return fetch("http://localhost:8088/comments", {
-            METHOD: "POST",
+            method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
