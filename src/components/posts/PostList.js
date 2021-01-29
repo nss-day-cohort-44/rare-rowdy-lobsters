@@ -9,6 +9,7 @@ export const PostList = (props) => {
         getPosts()
     }, [])
 
+    const reversedList = [...posts].reverse()
     return (
         <>
         <button onClick={() => props.history.push("/createPost")}>
@@ -16,7 +17,7 @@ export const PostList = (props) => {
             </button>
         {
             
-            posts.map(post => {
+            reversedList.map(post => {
                 if (props.location.pathname === "/posts" ) {
                     return <Post post={post} />
                 }
