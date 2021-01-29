@@ -16,7 +16,6 @@ export const PostDetail = props => {
     useEffect(() => {
         
     }, [post])
-    debugger
     const post_date = new Date(post.publication_date)
     console.log(post_date);
 
