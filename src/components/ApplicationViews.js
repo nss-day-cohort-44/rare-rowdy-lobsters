@@ -8,6 +8,7 @@ import { CategoryProvider } from "./categories/CategoryProvider"
 import { CommentProvider } from "./comments/CommentProvider"
 import { CommentForm } from "./comments/CommentForm"
 import { PostForm } from "./posts/PostForm"
+import { PostDetail } from "./posts/PostDetail"
 import { TagForm } from "./tags/TagForm"
 import { TagList } from "./tags/TagList"
 import { TagProvider } from "./tags/TagProvider"
@@ -17,14 +18,21 @@ export const ApplicationViews = (props) => {
         <>
             <CommentProvider>
                 <PostProvider>
-                    <Route exact path="/" render={
-                        props => <PostList {...props} />
-                    } />
-                    <Route exact path="/createPost" render={
-                        props => <PostForm {...props} />} />
-                    <Route exact path="/posts" render={
-                        props => <PostList {...props} />
-                    } />
+                    <CategoryProvider>
+                        <TagProvider>
+                            <Route exact path="/" render={
+                                props => <PostList {...props} />
+                            } />
+                            <Route exact path="/createPost" render={
+                                props => <PostForm {...props} />} />
+                            <Route exact path="/posts" render={
+                                props => <PostList {...props} />
+                            } />
+                            <Route path="/posts/:postId(\d+)" render={
+                                props => <PostDetail {...props} />
+                            } />
+                        </TagProvider>
+                    </CategoryProvider>
                 </PostProvider>
             </CommentProvider>
             <CategoryProvider>
