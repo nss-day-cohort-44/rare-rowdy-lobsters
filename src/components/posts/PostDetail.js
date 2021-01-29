@@ -35,7 +35,7 @@ export const PostDetail = props => {
                 : ""}
                 {/* reaction count */}
                 <FontAwesomeIcon icon={faCog} />
-                <FontAwesomeIcon icon={faTrashAlt} />
+                <FontAwesomeIcon icon={faTrashAlt} onClick={() => console.log('yes')} /> 
             </section>
         </>
     )
