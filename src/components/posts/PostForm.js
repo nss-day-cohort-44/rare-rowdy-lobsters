@@ -4,34 +4,37 @@ import {CategoryContext} from "../categories/CategoryProvider"
 
 export const PostForm=(props)=>{
 	const {categories, getCategories} = useContext(CategoryContext)
-    const {addPost, editPost}=useContext(PostContext)
-    const {post, setPost}=useState({})
-
+    const {posts, getPosts, addPost, updatePost}=useContext(PostContext)
+    const [post, setPost]=useState({})
+    
     useEffect(() => {
-		getCategories()
+        getCategories()
+        .then(getPosts)
+        
 	}, [])
     // set the state for the items we need from the form
     const [title, setTitle]= useState()
     const [content, setContent]=useState()
     const [category, setCategory]=useState()
 
-    const editMode = props.match.params.hasOwnProperty("id")  // true or false
-    console.log(editMode)
+    const editMode = props.match.params.hasOwnProperty("postId")  // true or false
 
-    const TitleStateChange=(event)=>{
-        setTitle(event.target.value)
+    const handleControlledInputChange = (event) => {
+       
+        const newPost = Object.assign({}, post)  
+               
+        newPost[event.target.name] = event.target.value  
+        setPost(newPost)                                 
     }
-    const ContentStateChange=(event)=>{
-        setContent(event.target.value)
-    }
-    const CategoryStateChange=(event)=>{
-        setCategory(event.target.value)
-    }
+
+    useEffect(()=>{
+        getPostInEditMode()
+    },[posts])
 
     const getPostInEditMode=()=>{
         if(editMode){
             const postId=parseInt(props.match.params.postId)
-            const selectedPost=post.find(p=>p.id===postId)
+            const selectedPost=posts.find(p=>p.id===postId)
             setPost(selectedPost)
         }
     }
@@ -39,14 +42,28 @@ export const PostForm=(props)=>{
     // making the new object on submit
     const constructNewPost=()=>{
         const user_id=parseInt(localStorage.getItem("rare_user_id"))
+
+        if (editMode){
+            const newPost={
+                id: post.id,
+                user_id:user_id,
+                category_id: post.category_id,
+                title: post.title,
+                publication_date:Date.now(),
+                content:post.content, 
+            }
+            updatePost(newPost).then(props.history.push("/"))
+        }
+        else{
         const newPost={
             user_id:user_id,
-            category_id: category,
-            title: title,
+            category_id: post.category_id,
+            title: post.title,
             publication_date:Date.now(),
-            content:content, 
+            content: post.content, 
         }
         addPost(newPost).then(props.history.push("/"))
+        }
     }
 
     return(
@@ -56,17 +73,17 @@ export const PostForm=(props)=>{
 
                 <fieldset>
                     <label> Title</label>
-                    <input type="text" name="title"  onChange={TitleStateChange}></input>
+                    <input type="text" name="title" defaultValue={post.title}  onChange={handleControlledInputChange}></input>
                 </fieldset>
 
                 <fieldset>
                     <label> Content</label>
-                    <input type="text" name="content" onChange={ContentStateChange}></input>
+                    <input type="text" name="content" defaultValue={post.content} onChange={handleControlledInputChange}></input>
                 </fieldset>
 
                 <fieldset>
                     <label> Category</label>
-                    <select name="content" onChange={CategoryStateChange}>
+                    <select name="category_id"  onChange={handleControlledInputChange}>
                     <option value="0">Select Category</option>
                                 {categories.map(e => (
                                     <option key={e.id} value={e.id}>
