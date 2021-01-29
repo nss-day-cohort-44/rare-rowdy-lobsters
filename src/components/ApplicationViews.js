@@ -18,7 +18,6 @@ export const ApplicationViews = (props) => {
         <>
             <CommentProvider>
                 <PostProvider>
-<<<<<<< HEAD
                     <CategoryProvider>
                         <TagProvider>
                             <Route exact path="/" render={
@@ -34,19 +33,6 @@ export const ApplicationViews = (props) => {
                             } />
                         </TagProvider>
                     </CategoryProvider>
-=======
-                    <Route exact path="/" render={
-                        props => <PostList {...props} />
-                    } />
-                    <Route exact path="/createPost" render={
-                        props => <PostForm {...props} />} />
-                    <Route exact path="/posts" render={
-                        props => <PostList {...props} />
-                    } />
-                    <Route path="/posts/:postId(\d+)" render={
-                        props => <PostDetail {...props} />
-                    } />
->>>>>>> mc-createComments
                 </PostProvider>
             </CommentProvider>
             <CategoryProvider>
@@ -60,15 +46,6 @@ export const ApplicationViews = (props) => {
                     props => <CommentForm {...props} />
                 } />
             </CommentProvider>
-<<<<<<< HEAD
-=======
-            <CategoryProvider>
-                <Route exact path="/categories">
-                    <CategoryList {...props} />
-                    <CategoryForm />
-                </Route>
-            </CategoryProvider>
->>>>>>> mc-createComments
             <TagProvider>
                 <Route exact path="/tags">
                     <TagList {...props} />
