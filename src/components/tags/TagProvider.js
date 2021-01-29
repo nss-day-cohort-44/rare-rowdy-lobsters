@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
+import { PostProvider } from "../posts/PostProvider";
 
 export const TagContext = React.createContext();
 
@@ -25,7 +26,6 @@ export const TagProvider = props => {
   }
 
   const addPostTag = (tagId, postId) => {
-    console.log("add tag?")
     const tagObj = {
       tag_id: tagId,
       post_id: postId
