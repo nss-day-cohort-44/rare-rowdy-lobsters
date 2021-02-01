@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
 import { TagContext } from "./TagProvider"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { TagForm } from "./TagForm"
 
 export const TagList = props => {
 
@@ -55,6 +56,7 @@ return (
 			<div>
 				{tags.map(t => <p>{t.label}
 				<DeleteModal id={t.id} />
+				<FontAwesomeIcon icon={faEdit} onClick={() => props.history.push(`/tags/${t.id}`)} />
 				</p>)}
 				
 			</div>
