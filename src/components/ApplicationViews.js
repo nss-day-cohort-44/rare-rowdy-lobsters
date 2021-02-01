@@ -41,14 +41,24 @@ export const ApplicationViews = (props) => {
                     </PostProvider>
                 </CommentProvider>
             </CategoryProvider>
+            <PostProvider>
+                <TagProvider>
+                    <Route path="/posts/:postId(\d+)" render={
+                        props => <PostDetail {...props} />
+                    } />
+                </TagProvider>
+            </PostProvider>
             <CategoryProvider>
-                <Route exact path="/categories">
-                    <CategoryList {...props} />
+                <Route exact path="/categories" render={
+                    props => <CategoryList {...props} />
+                } />
                     <CategoryForm {...props} />
-                </Route>
             </CategoryProvider>
             <CommentProvider>
-                <Route path="/addComment" render={
+                <Route exact path="/addComment" render={
+                    props => <CommentForm {...props} />
+                } />
+                <Route path="/addComment/:commentId(\d+)" render={
                     props => <CommentForm {...props} />
                 } />
                 <Route exact path="/post/comments" render={
