@@ -22,7 +22,7 @@ export const CommentList = props => {
                     if (parseInt(comment.post_id) === parseInt(chosenPost.id))
                     return (
                     <>
-                    <Comment comment={comment} post={chosenPost} />
+                    <Comment comment={comment} post={chosenPost} props={props}/>
                     <FontAwesomeIcon icon={faTrashAlt} onClick={() => {
                         deleteComment(comment.id)
                         .then(() => setCommentDeleted(comment.id))
