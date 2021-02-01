@@ -45,7 +45,7 @@ export const CommentForm = props => {
             addComment({
                 post_id: parseInt(props.location.state.chosenPost.id),
                 author_id: parseInt(localStorage.getItem("rare_user_id")),
-                content: comment.current.value,
+                content: comment.content,
                 created_on: Date.now()
             })
             .then(() => props.history.goBack())
