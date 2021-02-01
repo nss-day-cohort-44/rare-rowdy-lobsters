@@ -56,10 +56,12 @@ export const ApplicationViews = (props) => {
                 } />
             </CommentProvider>
             <TagProvider>
-                <Route exact path="/tags">
-                    <TagList {...props} />
-                    <TagForm />
-                </Route>
+                
+                <Route exact path="/tags" render={
+                    props => <TagList {...props} />
+                } />
+                <TagForm />
+                
             </TagProvider>
         </>
     )
