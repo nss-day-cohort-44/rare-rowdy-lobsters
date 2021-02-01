@@ -3,6 +3,7 @@ import { TagContext } from "./TagProvider"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const TagList = props => {
 

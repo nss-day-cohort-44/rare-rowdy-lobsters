@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import { TagPost } from "../tags/TagPost"
 import {Button, Modal} from 'react-bootstrap'
 import { TagContext } from "../tags/TagProvider"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const PostDetail = props => {
     const { posts, getPosts, getPostById, deletePost } = useContext(PostContext)
