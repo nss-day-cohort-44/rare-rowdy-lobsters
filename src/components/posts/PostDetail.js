@@ -2,9 +2,8 @@ import React, {useContext, useEffect, useState} from "react"
 import { PostContext } from "./PostProvider"
 import { HumanDate } from "../utils/HumanDate"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faCog, faComment, faTags, } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faCog, faComment, faTags } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
-// import { faTrashAlt, faCog, faTags, faTag } from '@fortawesome/free-solid-svg-icons'
 import { TagPost } from "../tags/TagPost"
 import {Button, Modal} from 'react-bootstrap'
 import { TagContext } from "../tags/TagProvider"
@@ -59,6 +58,9 @@ export const PostDetail = props => {
                     Yes</Button>
             </Modal.Footer>
             </Modal>
+            <Link to={{pathname: "/post/comments", state:{chosenPost: post} }}>
+                <button>View Comments</button>
+            </Link>
         </>
         );
     }
@@ -91,13 +93,13 @@ export const PostDetail = props => {
                 })} </div>: ""}
                 {/* reaction count */}
                 <FontAwesomeIcon icon={faCog} />
+                
+                <DeleteConfModal />
+
                 <FontAwesomeIcon icon={faTrashAlt} />
                 <Link to={{pathname: "/addComment", state: {chosenPost: props.location.state.chosenPost} }}>
                 <FontAwesomeIcon icon={faComment} />
                 </Link>
-                
-                
-                <DeleteConfModal />
                 {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id")) ?
 
                 <FontAwesomeIcon icon={faTags} onClick={() => {
