@@ -32,8 +32,7 @@ export const CategoryProvider = props => {
 		.then(getCategories)
 	}
 
-	const updateCategory = category => {
-		console.log(category);
+	const updateCategory = (category) => {
 		return fetch(`http://localhost:8088/categories/${category.id}`, {
 			method: "PUT",
 			headers: {
