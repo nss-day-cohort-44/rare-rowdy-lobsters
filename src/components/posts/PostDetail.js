@@ -39,13 +39,14 @@ export const PostDetail = props => {
             {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))
                     ?<FontAwesomeIcon icon={faTrashAlt} onClick={handleShow} /> 
                     : ""}
-             {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))
+            {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))
                     ?<FontAwesomeIcon icon={faCog} onClick={handleShow} onClick={() => props.history.push(`/createPost/${post.id}`)} /> 
                     : ""}
 
             <Modal
                 show={show}
                 onHide={handleClose}
+                backdrop="static"
             >
             <Modal.Header closeButton>
                 <Modal.Title>Delete Post</Modal.Title>
