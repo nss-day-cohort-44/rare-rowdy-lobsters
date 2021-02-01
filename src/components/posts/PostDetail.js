@@ -100,8 +100,8 @@ export const PostDetail = props => {
                 <Link to={{pathname: "/addComment", state: {chosenPost: props.location.state.chosenPost} }}>
                 <FontAwesomeIcon icon={faComment} />
                 </Link>
-                
                 {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id")) ?
+
                 <FontAwesomeIcon icon={faTags} onClick={() => {
                     tagPost ? setTagPost(false) : setTagPost(post.id)
                 }}/> : ""}
