@@ -73,12 +73,12 @@ export const PostForm=(props)=>{
 
                 <fieldset>
                     <label> Title</label>
-                    <input type="text" name="title" defaultValue={post.title}  onChange={handleControlledInputChange}></input>
+                    {post&&<input type="text" name="title" defaultValue={post.title}  onChange={handleControlledInputChange}></input>}
                 </fieldset>
 
                 <fieldset>
                     <label> Content</label>
-                    <input type="text" name="content" defaultValue={post.content} onChange={handleControlledInputChange}></input>
+                    {post&&<input type="text" name="content" defaultValue={post.content} onChange={handleControlledInputChange}></input>}
                 </fieldset>
 
                 <fieldset>
