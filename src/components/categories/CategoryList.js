@@ -3,6 +3,7 @@ import { CategoryContext } from "./CategoryProvider"
 import {Button, Modal} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit} from '@fortawesome/free-solid-svg-icons'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const CategoryList = props => {
 
@@ -22,11 +23,20 @@ export const CategoryList = props => {
 		setNewCat(newCatObj)
 	}
 
+
+
 	function EditModal({category}) {
 		const [show, setShow] = useState(false);
 
-        const handleClose = () => setShow(false);
-        const handleShow = () => setShow(true);
+		if (category.label){
+			
+			console.log("yes");
+		} 
+		const handleClose = () => setShow(false);
+		const handleShow = () => setShow(true);
+		
+		
+
         return (
         <>
 			<FontAwesomeIcon icon={faEdit} onClick={handleShow} />
