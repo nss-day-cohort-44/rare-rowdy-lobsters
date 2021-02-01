@@ -1,6 +1,7 @@
 import React, { useRef, useContext, useEffect } from "react"
 import { CategoryContext } from "./CategoryProvider"
 
+
 export const CategoryForm = props => {
 
 	const { categories, getCategories, addCategory } = useContext(CategoryContext)
@@ -18,6 +19,7 @@ export const CategoryForm = props => {
 			.then(getCategories)
 		}
 	}
+
 
 	return (
 		<>
