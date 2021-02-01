@@ -33,12 +33,6 @@ export const ApplicationViews = (props) => {
                     <CategoryForm />
                 </Route>
             </CategoryProvider>
-            <CategoryProvider>
-                <Route exact path="/categories">
-                    <CategoryList {...props} />
-                    <CategoryForm />
-                </Route>
-            </CategoryProvider>
             <PostProvider>
                 <TagProvider>
                     <Route path="/posts/:postId(\d+)" render={
