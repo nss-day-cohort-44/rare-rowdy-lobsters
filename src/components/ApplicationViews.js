@@ -17,25 +17,30 @@ import { CommentList } from "./comments/CommentList"
 export const ApplicationViews = (props) => {
     return (
         <>
+            <CategoryProvider>
             <CommentProvider>
                 <PostProvider>
-                    <CategoryProvider>
-                        <TagProvider>
-                            <Route exact path="/" render={
-                                props => <PostList {...props} />
-                            } />
-                            <Route exact path="/createPost" render={
-                                props => <PostForm {...props} />} />
-                            <Route exact path="/posts" render={
-                                props => <PostList {...props} />
-                            } />
-                            <Route path="/posts/:postId(\d+)" render={
-                                props => <PostDetail {...props} />
-                            } />
-                        </TagProvider>
-                    </CategoryProvider>
+                    <TagProvider>
+                        <Route exact path="/" render={
+                            props => <PostList {...props} />
+                        } />
+                        <Route exact path="/createPost" render={
+                            props => <PostForm {...props} />} />
+                        <Route exact path="/posts" render={
+                            props => <PostList {...props} />
+                        } />
+                        <Route path="/posts/:postId(\d+)" render={
+                            props => <PostDetail {...props} />
+                        } />
+
+                        <Route path="/createPost/:postId(\d+)" render={
+                            props => <PostForm {...props} />
+                        } />
+
+                    </TagProvider>
                 </PostProvider>
             </CommentProvider>
+            </CategoryProvider>
             <CategoryProvider>
                 <Route exact path="/categories">
                     <CategoryList {...props} />

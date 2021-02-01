@@ -38,6 +38,9 @@ export const PostDetail = props => {
             {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))
                     ?<FontAwesomeIcon icon={faTrashAlt} onClick={handleShow} /> 
                     : ""}
+             {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))
+                    ?<FontAwesomeIcon icon={faCog} onClick={handleShow} onClick={() => props.history.push(`/createPost/${post.id}`)} /> 
+                    : ""}
 
             <Modal
                 show={show}
@@ -92,7 +95,9 @@ export const PostDetail = props => {
                     </span>
                 })} </div>: ""}
                 {/* reaction count */}
-                <FontAwesomeIcon icon={faCog} />
+                {/* <FontAwesomeIcon onClick={() => props.history.push(`/createPost/${post.id}`)} icon={faCog} /> */}
+                {/* <FontAwesomeIcon icon={faCog} /> */}
+                {/* <FontAwesomeIcon icon={faCog} /> */}
                 
                 <DeleteConfModal />
 
@@ -112,5 +117,8 @@ export const PostDetail = props => {
         </>
     )
 }
+
+
+
 
 
