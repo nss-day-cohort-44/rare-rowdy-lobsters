@@ -46,8 +46,8 @@ export const TagProvider = props => {
     .then(getTags)
   }
 
-  return <TagContext.Provider value = {{
-		tags, getTags, getTagById, addTag, addPostTag, deleteTag
+  // return <TagContext.Provider value = {{
+	// 	tags, getTags, getTagById, addTag, addPostTag, deleteTag
   const deletePostTag = id => {
     return fetch(`http://localhost:8088/postTags/${id}`, {
       method: "DELETE"
