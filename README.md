@@ -51,7 +51,7 @@ All styling was accomplished with vanilla CSS3 written by us.
 1. [ERD](https://dbdiagram.io/d/5f885a013a78976d7b77cb74)
 1. Wireframe: provided by team lead
 
-## Authors
+# Authors
 [Devin Kent](https://github.com/dalamcd)
 [Mario Campopiano](https://github.com/mcampopiano)
 [Will Bishop](https://github.com/billwishop)
