@@ -8,6 +8,15 @@ export const PostList = (props) => {
     useEffect(() => {
         getPosts()
     }, [])
+    const userType=parseInt(localStorage.getItem("userType"))
+    function checkAdmin(theUserType){
+        if (theUserType===1){
+            console.log("admin")
+        } else{
+            console.log("author")
+        }
+    }
+    checkAdmin(userType)
 
     const reversedList = [...posts].reverse()
     return (
@@ -19,7 +28,13 @@ export const PostList = (props) => {
             
             reversedList.map(post => {
                 if (props.location.pathname === "/posts" ) {
-                    return <Post post={post} />
+                    if (userType===1){
+                        return <Post post={post} />
+
+                    }
+                    else if(post.approved===1){
+                        return <Post post={post} />
+                    }
                 }
                 
                 else if (parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))) {
