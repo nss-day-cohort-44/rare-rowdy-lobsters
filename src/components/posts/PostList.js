@@ -31,6 +31,8 @@ export const PostList = (props) => {
     useEffect(() => {
         getPosts().then(getCategories)
     }, [])
+    const userType=parseInt(localStorage.getItem("userType"))
+    
 
     useEffect(() => {
         const matchingPosts = posts.filter(post => post.title.toLowerCase().includes(searchTerms.toLowerCase()))
