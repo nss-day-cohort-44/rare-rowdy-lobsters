@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./NavBar.css"
 import Logo from "./rare.jpeg"
@@ -23,6 +23,13 @@ export const NavBar = () => {
             <li className="navbar__item">
                 <Link className="navbar__link" to="/categories">Categories</Link>
             </li>
+            {
+                (localStorage.getItem("userType") === '1')
+                ?   <li className="navbar__item">
+                        <Link className="navbar__link" to="/users">Users</Link>
+                    </li>
+                :<></>
+            }
             {
                 (localStorage.getItem("rare_user_id") !== null) ?
                     <li className="nav-item">
