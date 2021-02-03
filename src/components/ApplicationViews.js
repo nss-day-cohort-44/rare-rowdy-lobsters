@@ -15,6 +15,7 @@ import { TagProvider } from "./tags/TagProvider"
 import { CommentList } from "./comments/CommentList"
 import { UserProvider } from "./users/UserProvider"
 import { UserList } from "./users/UserList"
+import { UserDetail } from "./users/UserDetail"
 
 export const ApplicationViews = (props) => {
     return (
@@ -73,6 +74,9 @@ export const ApplicationViews = (props) => {
             <UserProvider>
                 <Route exact path = "/users" render={
                     props => <UserList {...props} />
+                } />
+                <Route exact path = "/users/:userId(\d+)" render={
+                    props => <UserDetail {...props} />
                 } />
             </UserProvider>
         </>
