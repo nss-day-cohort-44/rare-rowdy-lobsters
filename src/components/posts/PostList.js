@@ -1,15 +1,35 @@
 import React, { useContext, useEffect, useState } from "react"
+import { CategoryContext } from "../categories/CategoryProvider"
 import { Post } from "./Post"
 import { PostContext } from "./PostProvider"
 import { PostSearch } from "./PostSearch"
 
 export const PostList = (props) => {
-    const {posts, getPosts, searchTerms} = useContext(PostContext)
-
+    const { posts, getPosts, searchTerms } = useContext(PostContext)
+    const { categories, getCategories } = useContext(CategoryContext)
     const [filteredPosts, setFiltered] = useState([])
 
+    const changePosts = event => {
+        if (event.target.value !== "0") {
+
+            const newPosts = []
+            posts.forEach(post => {
+                if (parseInt(post.category_id) === parseInt(event.target.value)) {
+                    newPosts.push(post)
+                }
+                setFiltered(newPosts)
+            })
+        }
+        else {
+            setFiltered(posts)
+        }
+    }
+
     useEffect(() => {
-        getPosts()
+        setFiltered(posts)
+    }, [posts])
+    useEffect(() => {
+        getPosts().then(getCategories)
     }, [])
 
     useEffect(() => {
@@ -17,37 +37,34 @@ export const PostList = (props) => {
         setFiltered(matchingPosts)
     }, [searchTerms])
 
-
-    useEffect(() => {
-        setFiltered(posts)
-    }, [posts])
-
     const reversedList = [...filteredPosts].reverse()
     return (
         <>
-        <button onClick={() => props.history.push("/createPost")}>
+            <button onClick={() => props.history.push("/createPost")}>
                 Add Post
             </button>
-
             <PostSearch />
-        
-        
-
-
-        {
-            
-            reversedList.map(post => {
-                if (props.location.pathname === "/posts" ) {
-                    return <Post post={post} />
+            <select defaultValue="" onChange={changePosts}>
+                <option value="0">Filter by category</option>
+                {
+                    categories.map(cat => {
+                        return <option value={`${cat.id}`}>{cat.label}</option>
+                    })
                 }
-                
-                else if (parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))) {
-                    return <Post post={post} />
-                }
-                // else
-                // return <h1>Boo!</h1>
-            })
-        }
+
+            </select>
+            {
+
+                reversedList.map(post => {
+                    if (props.location.pathname === "/posts") {
+                        return <Post post={post} />
+                    }
+
+                    else if (parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id"))) {
+                        return <Post post={post} />
+                    }
+                })
+            }
         </>
     )
 }
