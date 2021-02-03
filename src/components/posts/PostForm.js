@@ -42,7 +42,7 @@ export const PostForm=(props)=>{
     // making the new object on submit
     const constructNewPost=()=>{
         const user_id=parseInt(localStorage.getItem("rare_user_id"))
-
+        
         if (editMode){
             const newPost={
                 id: post.id,
