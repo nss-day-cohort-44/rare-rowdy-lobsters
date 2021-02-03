@@ -52,14 +52,9 @@ All styling was accomplished with vanilla CSS3 written by us.
 1. Wireframe: provided by team lead
 
 ## Authors
-[Devin Kent] (https://github.com/dalamcd)
-[Mario Campopiano] (https://github.com/mcampopiano)
-[Will Bishop] (https://github.com/billwishop)
-[David Williams] (https://github.com/dwilliams91)
-[Jasmin Kaset] (https://github.com/jkaset)
-
-## **Planning Resources**
-Below is the planning document we created before implementing this project. This resource proved to be valuable during development as it constantly gave us a guide to what needed to happen and in which chronology. The completed project bore a striking similarity to our plan.
-* ERD
- 
+[Devin Kent](https://github.com/dalamcd)
+[Mario Campopiano](https://github.com/mcampopiano)
+[Will Bishop](https://github.com/billwishop)
+[David Williams](https://github.com/dwilliams91)
+[Jasmin Kaset](https://github.com/jkaset)
 
