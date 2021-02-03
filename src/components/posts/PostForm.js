@@ -83,14 +83,14 @@ export const PostForm=(props)=>{
 
                 <fieldset>
                     <label> Category</label>
-                    <select name="category_id"  onChange={handleControlledInputChange}>
+                    {post&&<select name="category_id" defaultValue={post.category_id} onChange={handleControlledInputChange}>
                     <option value="0">Select Category</option>
                                 {categories.map(e => (
                                     <option key={e.id} value={e.id}>
                                         {e.label}
                                     </option>
                                 ))}
-                    </select>
+                    </select>}
                 </fieldset>
 
 
