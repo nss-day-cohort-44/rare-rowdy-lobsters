@@ -13,6 +13,8 @@ import { TagForm } from "./tags/TagForm"
 import { TagList } from "./tags/TagList"
 import { TagProvider } from "./tags/TagProvider"
 import { CommentList } from "./comments/CommentList"
+import { UserProvider } from "./users/UserProvider"
+import { UserList } from "./users/UserList"
 
 export const ApplicationViews = (props) => {
     return (
@@ -68,7 +70,11 @@ export const ApplicationViews = (props) => {
                 </Route>
                 <Route exact path ="/tags/:tagId(\d+)" render={ props => <TagForm {...props} />} />
             </TagProvider>
-
+            <UserProvider>
+                <Route exact path = "/users" render={
+                    props => <UserList {...props} />
+                } />
+            </UserProvider>
         </>
     )
 }
