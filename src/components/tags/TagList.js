@@ -5,6 +5,7 @@ import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 import {Button, Modal} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { TagForm } from "./TagForm"
+import "./Tag.css"
 
 export const TagList = props => {
 
@@ -54,11 +55,10 @@ export const TagList = props => {
 return (
 		<>
 			<div>
-				{tags.map(t => <p>{t.label}
-				<DeleteModal id={t.id} />
-				<FontAwesomeIcon icon={faEdit} onClick={() => props.history.push(`/tags/${t.id}`)} />
-				</p>)}
-				
+				{tags.map(t => <div className="tagList">{t.label}
+				<div><DeleteModal id={t.id} />
+				<FontAwesomeIcon icon={faEdit} onClick={() => props.history.push(`/tags/${t.id}`)} /></div>
+				</div>)}
 			</div>
 		</>
 	)

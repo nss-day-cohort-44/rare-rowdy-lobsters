@@ -23,7 +23,7 @@ export const CategoryForm = props => {
 
 	return (
 		<>
-			<form>
+			<form className="categoryForm">
 				<input type="text" ref={label} placeholder="Category name"></input>
 				<button type="submit" onClick={evt => {
 					evt.preventDefault()

@@ -1,5 +1,6 @@
 import React, { useRef, useContext, useEffect } from "react"
 import { TagContext } from "./TagProvider"
+import "./Tag.css"
 
 export const TagForm = props => {
 
@@ -44,7 +45,7 @@ export const TagForm = props => {
 	} else {
 		return (
 			<>
-				<form>
+				<form className="tagForm"> 
 					<input type="text" ref={label} placeholder="Tag name"></input>
 					<button type="submit" onClick={evt => {
 						evt.preventDefault()

@@ -70,47 +70,52 @@ export const PostDetail = props => {
     return (
         <>
             <section className="post">
-                <h3 className="post__title">{post.title}</h3>
-                {post.user
-                    ? <div className="post__date"><HumanDate date={(Date(post.publication_date))} /></div>
-                    : ""}
-                <div className="post__image">
-                    {post.image_url
-                        ? <img src={`${post.image_url}`} />
+                <div className="post__grid">
+                    <div></div>
+                    <h3 className="post__title">{post.title}</h3>
+                    {post.user
+                        ? <div className="post__date"><HumanDate date={(Date(post.publication_date))} /></div>
                         : ""}
+                    <div className="post__image">
+                        {post.image_url
+                            ? <img src={`${post.image_url}`} />
+                            : ""}
+                    </div>
+                    <div className="post__content">{post.content}</div>
                 </div>
-                <div className="post__content">{post.content}</div>
-                {post.user
-                    ? <div className="post__author">Author: {post.user.first_name} {post.user.last_name}</div>
-                    : ""}
-                {post.tags && post.tags.length > 0
-                    ? <div className="post__tags">Tags:
-                {post.tags.map(t => {
-                        return <span className="post__tags__tag">{t.label}
-                            <FontAwesomeIcon icon={faTrashAlt} onClick={() => {
-                                deletePostTag(t.post_tag_id)
-                                    .then(getPosts)
-                            }} />
-                        </span>
-                    })} </div> : ""}
+                <div className="post__details">
+                    {post.user
+                        ? <div className="post__author">Author: {post.user.first_name} {post.user.last_name}</div>
+                        : ""}
+                    {post.tags && post.tags.length > 0
+                        ? <div className="post__tags">Tags:
+                    {post.tags.map(t => {
+                            return <span className="post__tags__tag">{t.label}
+                                <FontAwesomeIcon icon={faTrashAlt} onClick={() => {
+                                    deletePostTag(t.post_tag_id)
+                                        .then(getPosts)
+                                }} />
+                            </span>
+                        })} </div> : ""}
 
-                <DeleteConfModal />
+                    <DeleteConfModal />
 
 
-                {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id")) ?
+                    {parseInt(post.user_id) === parseInt(localStorage.getItem("rare_user_id")) ?
 
-                    <FontAwesomeIcon icon={faTags} onClick={() => {
-                        tagPost ? setTagPost(false) : setTagPost(post.id)
-                    }} /> : ""}
-                <Link to={{ pathname: "/addComment", state: { chosenPost: props.location.state.chosenPost } }}>
-                    <FontAwesomeIcon icon={faComment} />
-                </Link>
-                <Link to={{ pathname: "/post/comments", state: { chosenPost: post } }}>
-                    <button>View Comments</button>
-                </Link>
-                {tagPost && <TagPost post={post} />
+                        <FontAwesomeIcon icon={faTags} onClick={() => {
+                            tagPost ? setTagPost(false) : setTagPost(post.id)
+                        }} /> : ""}
+                    <Link to={{ pathname: "/addComment", state: { chosenPost: props.location.state.chosenPost } }}>
+                        <FontAwesomeIcon icon={faComment} />
+                    </Link>
+                    <Link to={{ pathname: "/post/comments", state: { chosenPost: post } }}>
+                        <button>View Comments</button>
+                    </Link>
+                    {tagPost && <TagPost post={post} />
 
-                }
+                    }
+                </div>
             </section>
         </>
     )

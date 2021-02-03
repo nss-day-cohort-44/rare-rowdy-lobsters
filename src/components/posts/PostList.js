@@ -41,11 +41,13 @@ export const PostList = (props) => {
 
     const reversedList = [...filteredPosts].reverse()
     return (
-        <>
+        <div className="postList">
             <button onClick={() => props.history.push("/createPost")}>
                 Add Post
             </button>
+            <div>
             <PostSearch />
+            </div>
             <select defaultValue="" onChange={changePosts}>
                 <option value="0">Filter by category</option>
                 {
@@ -75,7 +77,7 @@ export const PostList = (props) => {
 
                 
             }
-        </>
+        </div>
     )
 }
 

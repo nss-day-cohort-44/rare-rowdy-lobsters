@@ -1,0 +1,9 @@
+.user, .user__details {
+    min-width: 38em;
+    margin: .5em 20% .5em 20%;
+    border-radius: 1em;
+    padding: 1em;
+    border: 1px solid black;
+    box-shadow: 0 4px 2px -3px;
+}
+
