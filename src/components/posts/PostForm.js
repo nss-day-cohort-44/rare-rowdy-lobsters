@@ -50,7 +50,8 @@ export const PostForm=(props)=>{
                 category_id: post.category_id,
                 title: post.title,
                 publication_date:Date.now(),
-                content:post.content, 
+                content:post.content,
+                approved:post.approved,
             }
             updatePost(newPost).then(props.history.push("/"))
         }
