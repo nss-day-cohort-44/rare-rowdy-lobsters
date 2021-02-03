@@ -9,14 +9,7 @@ export const PostList = (props) => {
         getPosts()
     }, [])
     const userType=parseInt(localStorage.getItem("userType"))
-    function checkAdmin(theUserType){
-        if (theUserType===1){
-            console.log("admin")
-        } else{
-            console.log("author")
-        }
-    }
-    checkAdmin(userType)
+    
 
     const reversedList = [...posts].reverse()
     return (
