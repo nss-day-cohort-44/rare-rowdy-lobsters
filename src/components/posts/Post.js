@@ -4,6 +4,7 @@ import { TagPost } from "../tags/TagPost"
 
 export const Post = ({post}) => {
     const userType=parseInt(localStorage.getItem("userType"))
+    
     function ShowApprovalButton(){
         if (post.approved===0 && userType===1 ){
             console.log("this should hit twice")
