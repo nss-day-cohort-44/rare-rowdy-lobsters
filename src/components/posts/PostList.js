@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react"
 import { CategoryContext } from "../categories/CategoryProvider"
 import { Post } from "./Post"
 import { PostContext } from "./PostProvider"
+import { PostSearch } from "./PostSearch"
 
 export const PostList = (props) => {
-    const { posts, getPosts } = useContext(PostContext)
+    const { posts, getPosts, searchTerms } = useContext(PostContext)
     const { categories, getCategories } = useContext(CategoryContext)
     const [filteredPosts, setFiltered] = useState([])
 
@@ -31,12 +32,18 @@ export const PostList = (props) => {
         getPosts().then(getCategories)
     }, [])
 
+    useEffect(() => {
+        const matchingPosts = posts.filter(post => post.title.toLowerCase().includes(searchTerms.toLowerCase()))
+        setFiltered(matchingPosts)
+    }, [searchTerms])
+
     const reversedList = [...filteredPosts].reverse()
     return (
         <>
             <button onClick={() => props.history.push("/createPost")}>
                 Add Post
             </button>
+            <PostSearch />
             <select defaultValue="" onChange={changePosts}>
                 <option value="0">Filter by category</option>
                 {
@@ -44,6 +51,7 @@ export const PostList = (props) => {
                         return <option value={`${cat.id}`}>{cat.label}</option>
                     })
                 }
+
             </select>
             {
 
@@ -60,3 +68,12 @@ export const PostList = (props) => {
         </>
     )
 }
+
+//second half of code showing nonfiltered results in reverse order 
+//need to make this only work for all posts?
+//first half of code showing filtered posts but wrong order and without logic for single posts
+{/* <div>
+            {
+                filteredPosts.map(post => <Post key={post.id} post={post} />)
+            }
+        </div> */}
