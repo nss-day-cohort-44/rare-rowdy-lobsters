@@ -43,7 +43,7 @@ Rare is a publishing platform and social application that allows authenticated u
 ```npm start```
  
 ## **Technologies Used**
-This application was built using the React JavaScript library, and was bootstrapped with create-react-app. The only package used in the production site outside of those provided by create-react-app was react-router-dom.
+This application was built using the React JavaScript library. The only package used in the production site outside of those provided by create-react-app was react-router-dom.
 The API server is powered by SQLite, watchgod and Python.
 All styling was accomplished with vanilla CSS3 written by us.
 
