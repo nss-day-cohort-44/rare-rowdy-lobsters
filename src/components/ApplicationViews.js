@@ -46,8 +46,9 @@ export const ApplicationViews = (props) => {
             </CategoryProvider>
             <CategoryProvider>
                 <Route exact path="/categories" render={
-                    props => (<><CategoryList {...props} />
-                    <CategoryForm {...props} /></>)
+                    props => (<><CategoryForm {...props} />
+                    <CategoryList {...props} />
+                    </>)
                 } />
             </CategoryProvider>
             <CommentProvider>
@@ -64,8 +65,8 @@ export const ApplicationViews = (props) => {
             <TagProvider>
                 <Route exact path="/tags" render={ props =>
                 (<>
-                    <TagList {...props} />
                     <TagForm {...props} />
+                    <TagList {...props} />
                 </>)}>
 
                 </Route>

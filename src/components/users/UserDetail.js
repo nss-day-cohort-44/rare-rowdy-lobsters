@@ -12,7 +12,7 @@ export const UserDetail = props => {
     }, [])
 
     return (
-        <>
+        <div className="user__details">
             <h1 className="user__name">
                 {user.first_name} {user.last_name}
             </h1>
@@ -21,7 +21,7 @@ export const UserDetail = props => {
             <div className="user__date"><HumanDate date={(Date(user.created_on))} /></div>
             {user.account_type&&<div className="user__accountType">{user.account_type.label}</div>}
 
-        </>
+        </div>
     )
 }
 

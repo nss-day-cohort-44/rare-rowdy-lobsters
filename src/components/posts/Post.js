@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import { TagPost } from "../tags/TagPost"
 import { PostContext } from "./PostProvider"
+import "./Post.css"
 
 
 

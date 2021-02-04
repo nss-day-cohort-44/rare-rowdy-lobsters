@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState, useRef } from "react"
 import { CategoryContext } from "./CategoryProvider"
 import {Button, Modal} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit} from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt, faEdit} from '@fortawesome/free-solid-svg-icons'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./Category.css"
 
 export const CategoryList = props => {
 
@@ -53,10 +54,18 @@ export const CategoryList = props => {
 	return (
 		<>
 			<div>
-				{categories.map(c => <p>{c.label}<button onClick={() => {
-					deleteCategory(c.id)
-				}}>Delete Category</button>
-				<EditModal category={c}/></p>)}
+				{categories.map(c => <div className="categoryList">{c.label}
+					<div>
+						<FontAwesomeIcon 
+					icon={faTrashAlt} 
+					onClick={() => {
+						deleteCategory(c.id)
+					}} />
+					<EditModal category={c}/>
+					</div>
+					</div>
+					)
+				}
 			</div>
 		</>
 	)
