@@ -9,9 +9,9 @@ Rare is a publishing platform and social application that allows authenticated u
 * Users can create, edit, and delete Tags and Categories to a Post in order to better classify their Posts. Both Tags and Categories can be managed on individual posts or as list views that include the same capabilities.
 * Users can create, edit, and delete Comments on their Posts and other user’s Posts in order to take part in a discussion regarding the post.
 * Users have the capability to view all of their Posts as a list, or view Posts by all users as a list.
-* Admins can approve or delete Author posts before posts are displayed
-* Users can search posts by title 
-* Users can sort posts by category
+* Admins can approve or delete Author posts before posts are displayed.
+* Users can search posts by title.
+* Users can sort posts by category.
 
 ## **Setup Client Server**
  
